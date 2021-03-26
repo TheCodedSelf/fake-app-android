@@ -9,3 +9,5 @@ Adding some more flair.
 ## More details
 
 Adding some more things for the 1.1.3 release.
+
+## Fixing another bug
