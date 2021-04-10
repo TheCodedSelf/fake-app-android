@@ -14,3 +14,5 @@ Adding some more things for the 1.1.3 release.
 
 Preparing 1.1.4!
 Adding some more flair.
+
+## Fixing another bug
