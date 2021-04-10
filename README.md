@@ -13,3 +13,4 @@ Adding some more things for the 1.1.3 release.
 ## Next release details
 
 Preparing 1.1.4!
+Adding some more flair.
