@@ -16,3 +16,5 @@ Preparing 1.1.4!
 Adding some more flair.
 
 ## Fixing another bug
+
+MAKING BIG CHANGES
