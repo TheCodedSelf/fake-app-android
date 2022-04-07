@@ -1,0 +1,113 @@
+name: Android Build & Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up ruby env
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2
+          bundler-cache: true
+
+      # Only needed for react native
+      # - name: Setup node env
+      #   uses: actions/setup-node@v1.4.4
+      #   with:
+      #     node-version: '10.x'
+      #     registry-url: 'https://registry.npmjs.org'
+
+      # - name: Cache node modules
+      #   uses: actions/cache@v2
+      #   env:
+      #     cache-name: cache-node-modules
+      #   with:
+      #     path: ~/.npm
+      #     key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-build-${{ env.cache-name }}-
+
+      # - name: Install node dependencies
+      #   run: npm ci
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_READ_ONLY_TOKEN }}
+
+      # - name: Cache patch-package
+      #   uses: actions/cache@v2
+      #   env:
+      #     cache-name: cache-patch-package
+      #   with:
+      #     path: ${{ github.workspace }}/patches
+      #     key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/patches/**') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-build-${{ env.cache-name }}-
+
+      # - name: Run patch-package
+      #   run: npm run patch-package
+
+      # - name: Run tests
+      #   run: npm test
+      #   env:
+      #     CI: true
+
+      - name: Decode Service Account JSON File
+        uses: timheuer/base64-to-file@v1
+        id: service_account_json_file
+        with:
+          fileName: "serviceAccount.json"
+          encodedString: ${{ secrets.GPLAY_SERVICE_ACCOUNT_JSON_KEY }}
+
+      - name: Decode Keystore File
+        uses: timheuer/base64-to-file@v1
+        id: android_keystore
+        with:
+          fileName: "android_keystore.keystore"
+          encodedString: ${{ secrets.ANDROID_KEYSTORE }}
+
+      - name: Define version code with offset
+        env:
+          RUN_NUMBER: ${{ github.run_number }}
+          INITIAL_VERSION_CODE: 73 # Todo figure out which number this should be
+        run: |
+          VERSION_CODE=$((INITIAL_VERSION_CODE + RUN_NUMBER))
+          echo "version_code=$VERSION_CODE" >> $GITHUB_ENV
+
+      - name: Update version code
+        uses: chkfung/android-version-actions@v1.1
+        with:
+          gradlePath: android/app/build.gradle
+          versionCode: ${{ env.version_code }}
+
+      - name: Build & deploy Android release
+        run: bundle exec fastlane android deploy
+        env:
+          KEYSTORE_FILE: ${{ steps.android_keystore.outputs.filePath }}
+          STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS}}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          ANDROID_JSON_KEY_FILE: ${{ steps.service_account_json_file.outputs.filePath }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: assets
+          path: |
+            ${{ github.workspace }}/android/app/build/outputs/apk/release
+            ${{ github.workspace }}/android/app/build/outputs/bundle/release
+
+    # upload to instabug, which we don't need this time
+    # - name: Get APK Version
+    #   uses: JantHsueh/get-apk-info-action@1.0
+    #   id: apk_info
+    #   with:
+    #     apkPath: ${{ github.workspace }}/android/app/build/outputs/apk/release/app-release.apk
+
+    # - name: Upload instabug sym
+    #   run: npm run upload-android-instabug-sym ${{ steps.apk_info.outputs.versionNum }} ${{ steps.apk_info.outputs.versionCode }}
+    #   env:
+    #     INSTABUG_APP_TOKEN: ${{ secrets.INSTABUG_APP_TOKEN }}
