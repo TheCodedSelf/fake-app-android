@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "380866967680",
+    "project_id": "fake-app-52038",
+    "storage_bucket": "fake-app-52038.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380866967680:android:d014dc4c689ac4f3e24e65",
+        "android_client_info": {
+          "package_name": "com.runway.example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380866967680-cahd8ulmrihuk98uh0c3h71ev4frccg5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbssBMwmzq6VXcsyobWFOY0gpHab62yfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380866967680-cahd8ulmrihuk98uh0c3h71ev4frccg5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
