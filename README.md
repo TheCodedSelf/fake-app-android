@@ -30,4 +30,5 @@ Another bug fix
 
 ## Cherry-pick PR
 
-We want to detect regular (non-squashed) PRs
+We want to detect squashed PRs
+
