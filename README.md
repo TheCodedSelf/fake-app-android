@@ -22,6 +22,12 @@ MAKING BIG CHANGES
 
 Another bug fix
 
+
 ## Cherry-pick
 
 1.35.0 is going to be huge!
+
+
+## Cherry-pick PR
+
+We want to detect regular (non-squashed) PRs
