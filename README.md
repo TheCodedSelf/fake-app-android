@@ -30,5 +30,6 @@ Another bug fix
 
 ## Cherry-pick PR
 
-We want to detect squashed PRs with multiple commits
+We want to detect squashed PRs with multiple commits and make sure they are merged if possible.
+
 
