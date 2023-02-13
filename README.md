@@ -35,7 +35,8 @@ notifications when needed and that the AutoMerge automation doesn't interfere wi
 
 ## Cherry-pick PR follow up
 
-We want to open a single PR
+We want to open a single PR and then keep cherry-picking work as it comes through
+
 
 
 
