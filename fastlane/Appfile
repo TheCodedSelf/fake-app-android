@@ -1,0 +1,5 @@
+package_name("com.runway.example")
+
+# For more information about the Appfile, see:
+
+# https://docs.fastlane.tools/advanced/#appfile
