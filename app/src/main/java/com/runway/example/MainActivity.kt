@@ -6,6 +6,8 @@ import android.os.Bundle
 // This is the app's main activity and there's no other like it!
 // Another line of comments for dual tagging
 // Yet another line!
+// Let's add another line
+// Another line to test squashing
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
