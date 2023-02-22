@@ -31,10 +31,12 @@ platform :android do
 
   desc "Build & deploy the Android app to Google Play Console"
   lane :build_deploy do
+    fetch_and_increment_build_number
+
     gradle(
       task: "bundle", 
       build_type: "release",
-      # flavor: "{{ flavor }}",
+      flavor: "{{ flavor }}",
       properties: {
         "android.injected.signing.store.file" => ENV["KEYSTORE_FILE"],
         "android.injected.signing.store.password" => ENV["KEYSTORE_PASSWORD"],
@@ -42,6 +44,7 @@ platform :android do
         "android.injected.signing.key.password" => ENV["KEYSTORE_PRIVATE_KEY_PASSWORD"],
       }  
     )
+    
     upload_to_play_store(
       track: "internal",
       json_key_data: ENV["JSON_KEY_DATA"]
