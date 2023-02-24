@@ -8,6 +8,7 @@ import android.os.Bundle
 // Yet another line!
 // Let's add another line
 // Another line to test squashing
+// Now one more time
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
