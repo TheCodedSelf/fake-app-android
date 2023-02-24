@@ -56,3 +56,7 @@ Body so we create a 2nd commit
 ## Test incremental work
 
 All in one commit
+
+## About to squash this one
+
+Some text
