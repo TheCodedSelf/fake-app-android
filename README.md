@@ -62,3 +62,5 @@ All in one commit
 Some text
 
 ## Custom strings
+
+We expect custom strings to be used for PR title, body and commit messages
