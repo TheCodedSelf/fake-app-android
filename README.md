@@ -60,3 +60,5 @@ All in one commit
 ## About to squash this one
 
 Some text
+
+## Custom strings
