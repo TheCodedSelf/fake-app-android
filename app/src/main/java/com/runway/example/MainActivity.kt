@@ -9,6 +9,7 @@ import android.os.Bundle
 // Let's add another line
 // Another line to test squashing
 // Now one more time, without squashing
+// This is for the custom strings
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
