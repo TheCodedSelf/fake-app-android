@@ -1,2 +1,5 @@
-json_key_file("") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
-package_name("com.runway.example") # e.g. com.krausefx.app
+package_name("com.runway.example")
+
+# For more information about the Appfile, see:
+
+# https://docs.fastlane.tools/advanced/#appfile

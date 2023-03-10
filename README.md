@@ -37,8 +37,35 @@ notifications when needed and that the AutoMerge automation doesn't interfere wi
 
 We want to open a single PR and then keep cherry-picking work as it comes through
 
+## Dual tagging
 
+We want to pick up changes for multiple versions and we want it to work both as a single and multi PR workflow
 
+## Dual tag + single PR
 
+We keep testing
 
+## Header as first commit
+
+Body as second commit
+
+## Cherry-pick individual commits
+
+Body so we create a 2nd commit
+
+## Test incremental work
+
+All in one commit
+
+## About to squash this one
+
+Some text
+
+## Custom strings
+
+We expect custom strings to be used for PR title, body and commit messages
+
+## Cherry-pick failed notification
+
+Expecting this text to be an issue when cherry-picking with missing PR in the middle
 
