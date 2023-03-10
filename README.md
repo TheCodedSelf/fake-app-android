@@ -67,4 +67,5 @@ We expect custom strings to be used for PR title, body and commit messages
 
 ## Cherry-pick failed notification
 
-This text should cause a merge conflict
+Expecting this text to be an issue when cherry-picking with missing PR in the middle
+
