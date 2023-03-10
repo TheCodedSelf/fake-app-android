@@ -64,3 +64,5 @@ Some text
 ## Custom strings
 
 We expect custom strings to be used for PR title, body and commit messages
+
+## Cherry-pick failed notification
