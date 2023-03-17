@@ -11,9 +11,9 @@ android {
 
     defaultConfig {
         applicationId "com.runway.example"
-        minSdkVersion 31
+        minSdkVersion 30
         targetSdkVersion 31
-        versionCode 80123
+        versionCode 80124
         versionName "1.57.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
